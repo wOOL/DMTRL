@@ -130,7 +130,7 @@ def TensorProducer(X, method, eps_or_k=0.01, datatype=np.float32, return_true_va
         A = [tf.Variable(i.astype(datatype)) for i in A]
         W = TTTensorProducer(A)
         param_dict = {'U': A}
-    elif method == 'SVD':
+    elif method == 'LAF':
         U, S, V = my_svd(np.transpose(t_unfold(X, -1)), eps_or_k)
         U = tf.Variable(U.astype(datatype))
         V = tf.Variable(np.dot(np.diag(S), V).astype(datatype))
